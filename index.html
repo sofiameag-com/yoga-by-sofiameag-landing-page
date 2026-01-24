@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sofia Meag | Yoga y Sound Healing en Pereira</title>
+    <meta name="description" content="Clases de Yoga y Sound Healing con Sofia Meag en Pereira, Colombia. Encuentra calma, movimiento y bienestar en cada sesión.">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Sofia Meag | Yoga y Sound Healing en Pereira">
+    <meta property="og:description" content="Calma, movimiento y bienestar en cada sesión. Clases de Yoga y Sound Healing en Pereira, Colombia.">
+    <meta property="og:image" content="https://sofiameag.com/images/hero-sofia.jpg">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --color-primary: #8B7355;
+            --color-secondary: #A8C5A8;
+            --color-accent: #D4A574;
+            --color-light: #F5F1ED;
+            --color-dark: #4A4A4A;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Cormorant Garamond', serif;
+        }
+        
+        .gradient-overlay {
+            background: linear-gradient(135deg, rgba(139, 115, 85, 0.9) 0%, rgba(168, 197, 168, 0.85) 100%);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: auto repeat(7, 1fr);
+            gap: 1px;
+            background-color: var(--color-primary);
+        }
+        
+        .schedule-cell {
+            background-color: white;
+            padding: 1rem;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        
+        .schedule-header {
+            background-color: var(--color-light);
+            font-weight: 600;
+            color: var(--color-primary);
+        }
+        
+        .schedule-time {
+            background-color: var(--color-light);
+            font-weight: 500;
+        }
+        
+        .class-yoga {
+            background-color: #E8DFD8;
+            border-left: 4px solid var(--color-primary);
+        }
+        
+        .class-sound {
+            background-color: #D5E5D5;
+            border-left: 4px solid var(--color-secondary);
+        }
+        
+        @media (max-width: 768px) {
+            .schedule-grid {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .schedule-cell {
+                border-radius: 8px;
+                border: 2px solid var(--color-primary);
+            }
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 0.8s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(139, 115, 85, 0.3);
+        }
+        
+        .nav-sticky {
+            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.95);
+        }
+    </style>
+</head>
+<body class="bg-[#F5F1ED]">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 bg-transparent">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <a href="#home" class="flex flex-col items-start text-white" style="font-family: 'Cormorant Garamond', serif;">
+                        <span class="text-2xl sm:text-3xl font-light tracking-wide">Clases de</span>
+                        <span class="text-4xl sm:text-5xl font-bold -mt-1">Yoga</span>
+                        <span class="text-xs sm:text-sm font-light tracking-widest">By Sofia Meag</span>
+                    </a>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link text-white hover:text-[#D4A574] transition-colors">Inicio</a>
+                    <a href="#about" class="nav-link text-white hover:text-[#D4A574] transition-colors">Sobre Mí</a>
+                    <a href="#schedule" class="nav-link text-white hover:text-[#D4A574] transition-colors">Horarios</a>
+                    <a href="#classes" class="nav-link text-white hover:text-[#D4A574] transition-colors">Clases</a>
+                    <a href="#gallery" class="nav-link text-white hover:text-[#D4A574] transition-colors">Galería</a>
+                    <a href="#contact" class="nav-link text-white hover:text-[#D4A574] transition-colors">Contacto</a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg">
+            <div class="px-4 pt-2 pb-4 space-y-2">
+                <a href="#home" class="block px-4 py-2 text-[#4A4A4A] hover:bg-[#F5F1ED] rounded">Inicio</a>
+                <a href="#about" class="block px-4 py-2 text-[#4A4A4A] hover:bg-[#F5F1ED] rounded">Sobre Mí</a>
+                <a href="#schedule" class="block px-4 py-2 text-[#4A4A4A] hover:bg-[#F5F1ED] rounded">Horarios</a>
+                <a href="#classes" class="block px-4 py-2 text-[#4A4A4A] hover:bg-[#F5F1ED] rounded">Clases</a>
+                <a href="#gallery" class="block px-4 py-2 text-[#4A4A4A] hover:bg-[#F5F1ED] rounded">Galería</a>
+                <a href="#contact" class="block px-4 py-2 text-[#4A4A4A] hover:bg-[#F5F1ED] rounded">Contacto</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
+        <!-- Background Image -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=1920&h=1080&fit=crop" alt="Yoga Practice" class="w-full h-full object-cover">
+            <div class="absolute inset-0 gradient-overlay"></div>
+        </div>
+        
+        <!-- Hero Content -->
+        <div class="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto animate-fade-in">
+            <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+                Calma, Movimiento y Bienestar
+            </h1>
+            <p class="text-xl sm:text-2xl text-white mb-8 font-light">
+                Encuentra tu paz interior con clases de Yoga y Sound Healing en Pereira
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#schedule" class="btn-primary text-white px-8 py-4 rounded-full text-lg font-semibold inline-block">
+                    Ver Horarios
+                </a>
+                <a href="#contact" class="bg-white text-[#8B7355] px-8 py-4 rounded-full text-lg font-semibold inline-block hover:bg-opacity-90 transition-all">
+                    Reserva tu Clase
+                </a>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10">
+            <a href="#about" class="text-white animate-bounce block">
+                <i class="fas fa-chevron-down text-3xl"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <!-- Image -->
+                <div class="order-2 md:order-1">
+                    <img src="images/sofia-hero.jpg" alt="Sofia Meag - Instructora de Yoga" class="rounded-lg shadow-2xl w-full h-auto">
+                </div>
+                
+                <!-- Content -->
+                <div class="order-1 md:order-2">
+                    <h2 class="text-5xl font-bold text-[#8B7355] mb-6">Sobre Mí</h2>
+                    <h3 class="text-2xl text-[#A8C5A8] mb-6 font-semibold">Sofia Meag</h3>
+                    <p class="text-lg text-[#4A4A4A] mb-6 leading-relaxed">
+                        Hola, soy Sofia Meag, instructora de yoga y facilitadora de Sound Healing en Pereira. Mi misión es acompañarte en un viaje de transformación personal a través de prácticas ancestrales y técnicas modernas de bienestar.
+                    </p>
+                    <p class="text-lg text-[#4A4A4A] mb-6 leading-relaxed">
+                        Cada sesión está diseñada para ofrecerte un espacio de calma, movimiento consciente y conexión profunda contigo mismo. Trabajo con dedicación para crear experiencias únicas que se adapten a tus necesidades individuales.
+                    </p>
+                    
+                    <!-- Specialties -->
+                    <div class="space-y-3 mb-8">
+                        <div class="flex items-center">
+                            <i class="fas fa-om text-[#D4A574] mr-3"></i>
+                            <span class="text-[#4A4A4A]">Clases de Yoga personalizadas</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-spa text-[#D4A574] mr-3"></i>
+                            <span class="text-[#4A4A4A]">Sesiones de Sound Healing</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-heart text-[#D4A574] mr-3"></i>
+                            <span class="text-[#4A4A4A]">Enfoque en bienestar integral</span>
+                        </div>
+                    </div>
+                    
+                    <a href="#contact" class="btn-primary text-white px-6 py-3 rounded-full text-lg font-semibold inline-block">
+                        Conoce Más
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schedule Section -->
+    <section id="schedule" class="py-20 bg-[#F5F1ED]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold text-[#8B7355] mb-4">Horarios de Clases</h2>
+                <p class="text-xl text-[#4A4A4A]">Encuentra el momento perfecto para tu práctica</p>
+            </div>
+            
+            <!-- Schedule Legend -->
+            <div class="flex flex-wrap justify-center gap-6 mb-10">
+                <div class="flex items-center">
+                    <div class="w-6 h-6 bg-[#E8DFD8] border-l-4 border-[#8B7355] mr-2"></div>
+                    <span class="text-[#4A4A4A] font-medium">Yoga</span>
+                </div>
+                <div class="flex items-center">
+                    <div class="w-6 h-6 bg-[#D5E5D5] border-l-4 border-[#A8C5A8] mr-2"></div>
+                    <span class="text-[#4A4A4A] font-medium">Sound Healing</span>
+                </div>
+            </div>
+            
+            <!-- Mobile Schedule -->
+            <div class="space-y-4">
+                <!-- Monday -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="bg-[#8B7355] text-white px-4 py-3 font-bold">Lunes</div>
+                    <div class="p-4 space-y-3">
+                        <div class="class-sound rounded-lg p-3">
+                            <div class="font-semibold text-[#4A4A4A]">6:30 PM - Sound Healing</div>
+                            <div class="text-sm text-gray-600">Sesión de sanación con sonido</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tuesday -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="bg-[#8B7355] text-white px-4 py-3 font-bold">Martes</div>
+                    <div class="p-4 space-y-3">
+                        <div class="class-yoga rounded-lg p-3">
+                            <div class="font-semibold text-[#4A4A4A]">7:00 AM - Yoga</div>
+                            <div class="text-sm text-gray-600">Empieza tu día con energía</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Wednesday -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="bg-[#8B7355] text-white px-4 py-3 font-bold">Miércoles</div>
+                    <div class="p-4 space-y-3">
+                        <div class="class-sound rounded-lg p-3">
+                            <div class="font-semibold text-[#4A4A4A]">6:30 PM - Sound Healing</div>
+                            <div class="text-sm text-gray-600">Sesión de sanación con sonido</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Thursday -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="bg-[#8B7355] text-white px-4 py-3 font-bold">Jueves</div>
+                    <div class="p-4 space-y-3">
+                        <div class="class-yoga rounded-lg p-3">
+                            <div class="font-semibold text-[#4A4A4A]">6:30 PM - Yoga</div>
+                            <div class="text-sm text-gray-600">Relaja tu cuerpo y mente</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Friday-Sunday -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="bg-[#8B7355] text-white px-4 py-3 font-bold">Viernes - Domingo</div>
+                    <div class="p-4">
+                        <p class="text-[#4A4A4A] text-center">Clases privadas disponibles</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <p class="text-lg text-[#4A4A4A] mb-6">¿Buscas un horario personalizado?</p>
+                <a href="#contact" class="btn-primary text-white px-8 py-4 rounded-full text-lg font-semibold inline-block">
+                    Consulta Clases Privadas
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Classes Section -->
+    <section id="classes" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold text-[#8B7355] mb-4">Mis Clases</h2>
+                <p class="text-xl text-[#4A4A4A]">Explora las diferentes prácticas que ofrezco</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <!-- Yoga -->
+                <div class="bg-[#F5F1ED] rounded-lg shadow-lg overflow-hidden card-hover">
+                    <div class="bg-[#8B7355] p-6 text-center">
+                        <i class="fas fa-om text-white text-5xl mb-4"></i>
+                        <h3 class="text-2xl font-bold text-white">Yoga</h3>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-[#4A4A4A] mb-4 leading-relaxed">
+                            Práctica de yoga que combina posturas físicas, técnicas de respiración y meditación. Ideal para todos los niveles, desde principiantes hasta practicantes avanzados.
+                        </p>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-[#A8C5A8] mr-2 mt-1"></i>
+                                <span class="text-[#4A4A4A]">Fortalece cuerpo y mente</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-[#A8C5A8] mr-2 mt-1"></i>
+                                <span class="text-[#4A4A4A]">Mejora flexibilidad y equilibrio</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-[#A8C5A8] mr-2 mt-1"></i>
+                                <span class="text-[#4A4A4A]">Reduce el estrés</span>
+                            </li>
+                        </ul>
+                        <div class="text-center">
+                            <span class="inline-block bg-[#8B7355] text-white px-4 py-2 rounded-full text-sm font-semibold">
+                                Martes 7:00 AM | Jueves 6:30 PM
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Sound Healing -->
+                <div class="bg-[#F5F1ED] rounded-lg shadow-lg overflow-hidden card-hover">
+                    <div class="bg-[#A8C5A8] p-6 text-center">
+                        <i class="fas fa-music text-white text-5xl mb-4"></i>
+                        <h3 class="text-2xl font-bold text-white">Sound Healing</h3>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-[#4A4A4A] mb-4 leading-relaxed">
+                            Terapia de sanación a través de frecuencias sonoras. Una experiencia profunda de relajación y reconexión que ayuda a liberar tensiones y equilibrar tu energía.
+                        </p>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-[#A8C5A8] mr-2 mt-1"></i>
+                                <span class="text-[#4A4A4A]">Relajación profunda</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-[#A8C5A8] mr-2 mt-1"></i>
+                                <span class="text-[#4A4A4A]">Equilibrio energético</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-[#A8C5A8] mr-2 mt-1"></i>
+                                <span class="text-[#4A4A4A]">Liberación de tensiones</span>
+                            </li>
+                        </ul>
+                        <div class="text-center">
+                            <span class="inline-block bg-[#A8C5A8] text-white px-4 py-2 rounded-full text-sm font-semibold">
+                                Lunes y Miércoles 6:30 PM
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Additional Info -->
+            <div class="mt-16 text-center bg-[#F5F1ED] rounded-lg p-8">
+                <h3 class="text-2xl font-bold text-[#8B7355] mb-4">¿Primera vez?</h3>
+                <p class="text-lg text-[#4A4A4A] mb-6">
+                    No te preocupes, todas las sesiones están diseñadas para adaptarse a tu nivel y necesidades. 
+                    Te acompañaré paso a paso en tu práctica.
+                </p>
+                <a href="#contact" class="btn-primary text-white px-6 py-3 rounded-full text-lg font-semibold inline-block">
+                    Reserva tu Primera Clase
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 bg-[#F5F1ED]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold text-[#8B7355] mb-4">Galería</h2>
+                <p class="text-xl text-[#4A4A4A]">Un vistazo a nuestras sesiones</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <div class="overflow-hidden rounded-lg shadow-lg card-hover h-64">
+                    <img src="https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?w=500&h=500&fit=crop" alt="Yoga Studio" class="w-full h-full object-cover">
+                </div>
+                <div class="overflow-hidden rounded-lg shadow-lg card-hover h-64">
+                    <img src="https://images.unsplash.com/photo-1588286840104-8957b019727f?w=500&h=500&fit=crop" alt="Yoga Practice" class="w-full h-full object-cover">
+                </div>
+                <div class="overflow-hidden rounded-lg shadow-lg card-hover h-64">
+                    <img src="images/sofia-hero.jpg" alt="Meditation" class="w-full h-full object-cover">
+                </div>
+                <div class="overflow-hidden rounded-lg shadow-lg card-hover h-64">
+                    <img src="https://images.unsplash.com/photo-1573590330099-d6c7355ec595?w=500&h=500&fit=crop" alt="Group Class" class="w-full h-full object-cover">
+                </div>
+                <div class="overflow-hidden rounded-lg shadow-lg card-hover h-64">
+                    <img src="https://images.unsplash.com/photo-1545389336-cf090694435e?w=500&h=500&fit=crop" alt="Yoga Pose" class="w-full h-full object-cover">
+                </div>
+                <div class="overflow-hidden rounded-lg shadow-lg card-hover h-64">
+                    <img src="https://images.unsplash.com/photo-1552196563-55cd4e45efb3?w=500&h=500&fit=crop" alt="Studio Space" class="w-full h-full object-cover">
+                </div>
+                <div class="overflow-hidden rounded-lg shadow-lg card-hover h-64">
+                    <img src="https://images.unsplash.com/photo-1600618528240-fb9fc964b853?w=500&h=500&fit=crop" alt="Outdoor Yoga" class="w-full h-full object-cover">
+                </div>
+                <div class="overflow-hidden rounded-lg shadow-lg card-hover h-64">
+                    <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=500&h=500&fit=crop" alt="Yoga Community" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold text-[#8B7355] mb-4">Contacto y Reservas</h2>
+                <p class="text-xl text-[#4A4A4A]">¿Lista para comenzar tu viaje de bienestar?</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Contact Form -->
+                <div class="bg-[#F5F1ED] rounded-lg shadow-xl p-8">
+                    <h3 class="text-2xl font-bold text-[#8B7355] mb-6">Reserva tu Clase</h3>
+                    <form id="contact-form" class="space-y-6">
+                        <div>
+                            <label class="block text-[#4A4A4A] font-semibold mb-2">Nombre Completo</label>
+                            <input type="text" id="name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8B7355]" placeholder="Tu nombre">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-[#4A4A4A] font-semibold mb-2">Email</label>
+                            <input type="email" id="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8B7355]" placeholder="tu@email.com">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-[#4A4A4A] font-semibold mb-2">Teléfono</label>
+                            <input type="tel" id="phone" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8B7355]" placeholder="+57 300 000 0000">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-[#4A4A4A] font-semibold mb-2">Tipo de Clase</label>
+                            <select id="class-type" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8B7355]">
+                                <option value="">Selecciona una opción</option>
+                                <option value="yoga">Yoga</option>
+                                <option value="sound-healing">Sound Healing</option>
+                                <option value="private">Clase Privada</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-[#4A4A4A] font-semibold mb-2">Mensaje</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8B7355]" placeholder="Cuéntame sobre tu experiencia y tus objetivos..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full btn-primary text-white px-6 py-4 rounded-full text-lg font-semibold">
+                            Enviar Reserva
+                        </button>
+                    </form>
+                    
+                    <div id="form-message" class="mt-4 hidden"></div>
+                </div>
+                
+                <!-- Contact Info -->
+                <div>
+                    <div class="bg-[#F5F1ED] rounded-lg shadow-xl p-8 mb-6">
+                        <h3 class="text-2xl font-bold text-[#8B7355] mb-6">Información de Contacto</h3>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <i class="fas fa-map-marker-alt text-[#D4A574] text-xl mr-4 mt-1"></i>
+                                <div>
+                                    <h4 class="font-semibold text-[#4A4A4A]">Ubicación</h4>
+                                    <p class="text-[#4A4A4A]">Calle 2 # 11B-23<br>Parque la Rebeca, frente a Colsalud<br>Pereira, Colombia</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <i class="fab fa-whatsapp text-[#D4A574] text-xl mr-4 mt-1"></i>
+                                <div>
+                                    <h4 class="font-semibold text-[#4A4A4A]">WhatsApp</h4>
+                                    <p class="text-[#4A4A4A]">+57 305 229 3626</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <i class="fas fa-envelope text-[#D4A574] text-xl mr-4 mt-1"></i>
+                                <div>
+                                    <h4 class="font-semibold text-[#4A4A4A]">Email</h4>
+                                    <p class="text-[#4A4A4A]">sofiameag@gmail.com</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <i class="fas fa-clock text-[#D4A574] text-xl mr-4 mt-1"></i>
+                                <div>
+                                    <h4 class="font-semibold text-[#4A4A4A]">Horarios</h4>
+                                    <p class="text-[#4A4A4A]">
+                                        Yoga: Martes 7:00 AM | Jueves 6:30 PM<br>
+                                        Sound Healing: Lunes y Miércoles 6:30 PM
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Social Media -->
+                    <div class="bg-[#F5F1ED] rounded-lg shadow-xl p-8 mb-6">
+                        <h3 class="text-2xl font-bold text-[#8B7355] mb-6">Sígueme en Instagram</h3>
+                        <div class="flex space-x-4">
+                            <a href="https://www.instagram.com/sofiameag/" target="_blank" rel="noopener noreferrer" class="w-12 h-12 bg-[#8B7355] rounded-full flex items-center justify-center text-white hover:bg-[#D4A574] transition-colors">
+                                <i class="fab fa-instagram text-xl"></i>
+                            </a>
+                            <a href="https://www.instagram.com/sofiameag/" target="_blank" rel="noopener noreferrer" class="text-[#4A4A4A] hover:text-[#8B7355] flex items-center">
+                                <span class="font-semibold">@sofiameag</span>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Map -->
+                    <div class="rounded-lg overflow-hidden shadow-xl">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.4425825847344!2d-75.69658332507846!3d4.810943495196735!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e38874c6c7a3f4b%3A0x8a1b5e6c7d8e9f0a!2sPereira%2C%20Risaralda%2C%20Colombia!5e0!3m2!1ses!2sus!4v1234567890" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#8B7355] text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8 mb-8">
+                <!-- About -->
+                <div>
+                    <h3 class="text-2xl font-bold mb-4" style="font-family: 'Cormorant Garamond', serif;">Sofia Meag</h3>
+                    <p class="text-[#F5F1ED]">
+                        Calma, movimiento y bienestar en cada sesión. Yoga y Sound Healing en Pereira.
+                    </p>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Enlaces Rápidos</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#about" class="text-[#F5F1ED] hover:text-[#D4A574] transition-colors">Sobre Mí</a></li>
+                        <li><a href="#schedule" class="text-[#F5F1ED] hover:text-[#D4A574] transition-colors">Horarios</a></li>
+                        <li><a href="#classes" class="text-[#F5F1ED] hover:text-[#D4A574] transition-colors">Clases</a></li>
+                        <li><a href="#contact" class="text-[#F5F1ED] hover:text-[#D4A574] transition-colors">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contacto</h4>
+                    <ul class="space-y-2">
+                        <li class="text-[#F5F1ED]">Pereira, Colombia</li>
+                        <li class="text-[#F5F1ED]">WhatsApp: +57 305 229 3626</li>
+                        <li class="text-[#F5F1ED]">sofiameag@gmail.com</li>
+                        <li>
+                            <a href="https://www.instagram.com/sofiameag/" target="_blank" rel="noopener noreferrer" class="text-[#F5F1ED] hover:text-[#D4A574]">
+                                @sofiameag
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-[#A8C5A8] pt-8 text-center">
+                <p class="text-[#F5F1ED]">
+                    &copy; 2026 Sofia Meag. Todos los derechos reservados. | Hecho con <i class="fas fa-heart text-[#D4A574]"></i> en Pereira
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="scroll-top" class="fixed bottom-8 right-8 bg-[#8B7355] text-white w-12 h-12 rounded-full shadow-lg hidden hover:bg-[#D4A574] transition-all">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+</body>
+</html>
