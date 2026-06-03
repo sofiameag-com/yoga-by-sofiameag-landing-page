@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const whatsappMessage = `Hola Sofia, soy ${name}. Me gustaría reservar una clase de ${getClassTypeName(classType)}.\n\nContacto:\nEmail: ${email}\nTeléfono: ${phone}\n\nMensaje: ${message || 'Sin mensaje adicional'}`;
         
         // Redirect to WhatsApp
-        const whatsappNumber = '573052293626'; // Sofia Meag's WhatsApp
+        const whatsappNumber = '573116155931'; // Sofia Meag's WhatsApp
         const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
         
         // Show success message

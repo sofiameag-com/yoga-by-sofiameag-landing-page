@@ -10,7 +10,7 @@ Landing page profesional para clases de Yoga y Sound Healing en Pereira, Colombi
 
 - **Instructora:** Sofia Meag
 - **Ubicación:** Calle 2 # 11B-23, Parque la Rebeca, frente a Colsalud, Pereira, Colombia
-- **WhatsApp:** +57 305 229 3626
+- **WhatsApp:** +57 311 615 5931
 - **Email:** sofiameag@gmail.com
 - **Instagram:** [@sofiameag](https://www.instagram.com/sofiameag/)
 
@@ -302,7 +302,7 @@ Para agregar Google Analytics:
 - En Vercel Dashboard, verificar estado del certificado
 
 ### Formulario no redirige a WhatsApp
-- Verificar número en `js/main.js`: `573052293626`
+- Verificar número en `js/main.js`: `573116155931`
 - Asegurar que el navegador permite pop-ups
 
 ### Imágenes no cargan
