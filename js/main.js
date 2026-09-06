@@ -122,20 +122,19 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Get form values
         const name = document.getElementById('name').value.trim();
-        const phone = document.getElementById('phone').value.trim();
         const classType = document.getElementById('class-type').value;
         const message = document.getElementById('message').value.trim();
         
         // Validate required fields
-        if (!name || !phone || !classType) {
+        if (!name || !classType) {
             showFormMessage('Por favor, completa todos los campos obligatorios.', 'error');
             return;
         }
         
         // Build WhatsApp message
-        let whatsappMessage = `Hola Sofia, soy ${name}. Me gustaría agendar una experiencia de ${getClassTypeName(classType)}.\n\nTeléfono: ${phone}`;
+        let whatsappMessage = `Hola Sofia, soy ${name}. Me gustaría agendar una experiencia de ${getClassTypeName(classType)}.`;
         if (message) {
-            whatsappMessage += `\n\nMensaje: ${message}`;
+            whatsappMessage += `\n\nDetalles: ${message}`;
         }
         
         const whatsappNumber = '573116155931';
@@ -162,7 +161,6 @@ document.addEventListener('DOMContentLoaded', function() {
         
         console.log('Form Data:', {
             name,
-            phone,
             classType,
             message,
             timestamp: new Date().toISOString()
