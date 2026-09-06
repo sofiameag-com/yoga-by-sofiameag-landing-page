@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sofiameag.com/sitemap.xml
+
+# AI / LLM discovery
+# https://sofiameag.com/llms.txt
