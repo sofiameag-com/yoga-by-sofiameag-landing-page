@@ -190,9 +190,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     function getClassTypeName(classType) {
         const classNames = {
-            'yoga': 'Yoga',
-            'sound-healing': 'Sound Healing',
-            'private': 'Clase Privada'
+            'nada-yoga': 'Nada Yoga',
+            'sound-healing': 'Sound Healing'
         };
         return classNames[classType] || classType;
     }
@@ -328,8 +327,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // ===== CONSOLE MESSAGE =====
     console.log('%c✨ Sofia Meag ✨', 'font-size: 24px; color: #8B7355; font-weight: bold;');
-    console.log('%cCalma, movimiento y bienestar en cada sesión 🧘‍♀️', 'font-size: 14px; color: #A8C5A8;');
-    console.log('%cYoga y Sound Healing en Pereira', 'font-size: 12px; color: #4A4A4A;');
+    console.log('%cSonido, calma y meditación en cada experiencia', 'font-size: 14px; color: #A8C5A8;');
+    console.log('%cNada Yoga y Sound Healing en Pereira', 'font-size: 12px; color: #4A4A4A;');
     
 });
 
