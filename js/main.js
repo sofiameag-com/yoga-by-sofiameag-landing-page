@@ -121,48 +121,47 @@ document.addEventListener('DOMContentLoaded', function() {
         e.preventDefault();
         
         // Get form values
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const phone = document.getElementById('phone').value;
+        const name = document.getElementById('name').value.trim();
+        const phone = document.getElementById('phone').value.trim();
         const classType = document.getElementById('class-type').value;
-        const message = document.getElementById('message').value;
+        const message = document.getElementById('message').value.trim();
         
-        // Validate form
-        if (!name || !email || !phone || !classType) {
+        // Validate required fields
+        if (!name || !phone || !classType) {
             showFormMessage('Por favor, completa todos los campos obligatorios.', 'error');
             return;
         }
         
-        // Email validation
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-            showFormMessage('Por favor, ingresa un email válido.', 'error');
-            return;
+        // Build WhatsApp message
+        let whatsappMessage = `Hola Sofia, soy ${name}. Me gustaría agendar una experiencia de ${getClassTypeName(classType)}.\n\nTeléfono: ${phone}`;
+        if (message) {
+            whatsappMessage += `\n\nMensaje: ${message}`;
         }
         
-        // Build WhatsApp message
-        const whatsappMessage = `Hola Sofia, soy ${name}. Me gustaría reservar una clase de ${getClassTypeName(classType)}.\n\nContacto:\nEmail: ${email}\nTeléfono: ${phone}\n\nMensaje: ${message || 'Sin mensaje adicional'}`;
+        const whatsappNumber = '573116155931';
+        const encodedText = encodeURIComponent(whatsappMessage);
+        const isMobile = /Android|iPhone|iPad|iPod|Windows Phone/i.test(navigator.userAgent);
         
-        // Redirect to WhatsApp
-        const whatsappNumber = '573116155931'; // Sofia Meag's WhatsApp
-        const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+        // On mobile, open WhatsApp app immediately (same tab). Delayed window.open gets blocked.
+        const whatsappUrl = isMobile
+            ? `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodedText}`
+            : `https://wa.me/${whatsappNumber}?text=${encodedText}`;
         
-        // Show success message
         showFormMessage(
-            `¡Gracias ${name}! Te estamos redirigiendo a WhatsApp para completar tu reserva...`,
+            `¡Gracias ${name}! Abriendo WhatsApp...`,
             'success'
         );
         
-        // Open WhatsApp after a short delay
-        setTimeout(() => {
-            window.open(whatsappUrl, '_blank');
-            contactForm.reset();
-        }, 1500);
+        contactForm.reset();
         
-        // Log form data for analytics (optional)
+        if (isMobile) {
+            window.location.href = whatsappUrl;
+        } else {
+            window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+        }
+        
         console.log('Form Data:', {
             name,
-            email,
             phone,
             classType,
             message,
